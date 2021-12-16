@@ -12,8 +12,9 @@ password = 'hbhl9500$'
 
 def target_info():
     '''获取需要强关的文件路径和名称'''
-    global file_info
+    global file_info, file_name
     file_info = input("请输入需要强关文件的路径:").strip()
+    file_name = input("请输入文件名:").strip()
 
 
 def ssh_client_con():
@@ -40,7 +41,7 @@ def sftp_client_con():
     tran.connect(username=username, password=password)
     # 2. 创建sftp实例化
     sftp = paramiko.SFTPClient.from_transport(tran)
-    local_path = r'D:/test/2021年年中述职报告-王世伟.pptx'    # 本地路径
+    local_path = r'D:/test/'+ file_name   # 本地路径
     # remote_path = '/srv/dev-rbd0/技术部/王世伟/test.txt'    # 远程路径
     # 下载共享上的文件到本地
     font_path = r'/srv/dev-rbd0'
